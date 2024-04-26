@@ -2,7 +2,12 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {
+      	colors: {
+          	Montserrat: ['"Montserrat"', 'tahoma', 'sans-serif'],
+				primary: '#45c3d2'
+			}
+    }
   },
   plugins: []
 }
