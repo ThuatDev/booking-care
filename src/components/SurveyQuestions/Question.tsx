@@ -1,4 +1,3 @@
-// Question.tsx
 import React from 'react'
 import Answer from './Answer'
 
@@ -15,9 +14,11 @@ interface Props {
 }
 
 const Question: React.FC<Props> = ({ data, onAnswer, selectedAnswer, setSelectedAnswer }) => {
+  if (!data) return null // Add a check to handle cases where data is undefined or null
+
   return (
     <div className='border border-gray-300 p-4 rounded-sm my-5'>
-      <div>{data.question}</div>
+      <div className='font-semibold'>{data.question}</div>
       {data.options.map((option, index) => (
         <Answer
           key={index}

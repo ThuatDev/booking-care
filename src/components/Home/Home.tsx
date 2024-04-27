@@ -25,7 +25,7 @@ const Home = () => {
   }
 
   return (
-    <div className='mx-auto w-4/5'>
+    <div className='mx-auto w-5/5 xl:w-4/5 px-3'>
       {!surveyStarted && (
         <>
           <div className='flex flex-wrap items-center pb-3 whitespace-nowrap'>
@@ -108,7 +108,7 @@ const Home = () => {
             className='fixed bottom-0 left-0 right-0 top-0 m-auto h-[285px] w-[90%] rounded-[10px] bg-white px-5 pt-2 md:h-[336px] md:w-[48%]'
             onClick={handlePopupClick}
           >
-            <div className='absolute right-4 top-4'>
+            <div className='absolute right-2 top-2 md:right-4 md:top-4'>
               <button onClick={() => setShowPopup(false)}>
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
                   <path
@@ -118,20 +118,20 @@ const Home = () => {
                 </svg>
               </button>
             </div>
-            <div className='mt-2 text-center text-22 font-bold text-black md:text-24'>
+            <div className='mt-4 md:mt-2 text-center text-22 font-bold text-black md:text-24 text-md'>
               Vui lòng cho biết lý do bạn làm bài test này
             </div>
             <div className='flex items-end'>
               <div className='flex flex-col justify-center mx-auto mt-4 w-[290px] border-1 border-[#62BAC3] rounded-3xl md:mt-9 md:w-[494px] '>
                 <button
                   onClick={handleStartSurvey}
-                  className='h-14 px-7 py-2 my-2 text-center text-16 font-medium text-black border taiwin hover:bg-[rgba(69,190,229,1)] hover:text-white md:px-0 rounded-2xl border-primary'
+                  className='h-14 px-7 py-2 my-2 text-center text-sm font-medium text-black border taiwin hover:bg-[rgba(69,190,229,1)] hover:text-white md:px-0 rounded-2xl border-primary'
                 >
                   Tình cờ biết đến bài test, muốn làm thử
                 </button>
                 <button
                   onClick={handleStartSurvey}
-                  className='h-14 px-7 py-2 my-2 text-center text-16 font-medium text-black border taiwin hover:bg-[rgba(69,190,229,1)] hover:text-white md:px-0 rounded-2xl border-primary '
+                  className='h-14 px-7 py-2 my-2 text-center text-sm font-medium text-black border taiwin hover:bg-[rgba(69,190,229,1)] hover:text-white md:px-0 rounded-2xl border-primary '
                 >
                   Đang gặp vấn đề tâm lý, cần tìm giải pháp hỗ trợ
                 </button>
