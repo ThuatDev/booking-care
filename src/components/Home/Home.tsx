@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -16,9 +17,32 @@ const Home = () => {
   const [isAnswerSelected, setIsAnswerSelected] = useState(false)
   const [showResult, setShowResult] = useState(false);
   const [scores, setScores] = useState(Array(questions.length).fill(0))
+=======
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useState } from 'react'
+import SurveyQuestions from '../SurveyQuestions/SurveyQuestions'
 
-  const togglePopup = () => {
-    setShowPopup(!showPopup)
+const Home = () => {
+  const [showPopup, setShowPopup] = useState(false)
+  const [surveyStarted, setSurveyStarted] = useState(false) // State mới để theo dõi khi bắt đầu làm bài test
+>>>>>>> master
+
+  const handleButtonClick = () => {
+    setShowPopup(true) // Hiển thị popup khi click vào button
+  }
+
+  const handleStartSurvey = () => {
+    setSurveyStarted(true) // Đánh dấu rằng bài test đã được bắt đầu
+    setShowPopup(false) // Ẩn popup khi bắt đầu làm bài test
+  }
+
+  const handleOverlayClick = () => {
+    setShowPopup(false) // Ẩn popup khi click ra ngoài
+  }
+
+  const handlePopupClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation() // Ngăn chặn sự kiện click từ phát sinh ra ngoài popup
   }
 
   const handleStart = () => {
@@ -106,9 +130,14 @@ const Home = () => {
 
   return (
     <div className='mx-auto w-4/5'>
+<<<<<<< HEAD
       {/* ẩn hết mọi item của header */}
       {!startTest && !showResult && (
         <div>
+=======
+      {!surveyStarted && (
+        <>
+>>>>>>> master
           <div className='flex flex-wrap items-center pb-3 whitespace-nowrap'>
             <a href='http://localhost:8080/' className='px-1 text-primary flex-shrink-0 text-xs'>
               #
@@ -123,7 +152,11 @@ const Home = () => {
           <div className='flex justify-between pb-9'>
             <h6 className='text-2xl font-semibold'>Bài Test đánh giá Lo âu - Trầm cảm - Stress (DASS 21)</h6>
           </div>
+<<<<<<< HEAD
           <div className='md:relative w-full h-[200px] sm:h-[300px] md:h-[380px] '>
+=======
+          <div className='md:relative w-full  h-[200px] sm:h-[300px] md:h-[380px] '>
+>>>>>>> master
             <img
               className='md:absolute inset-0 w-full h-full object-cover block'
               src='https://cdn.bookingcare.vn/fo/w1920/2023/04/26/092230-3.png'
@@ -131,7 +164,11 @@ const Home = () => {
             />
           </div>
           <div className='py-5'>
+<<<<<<< HEAD
             <p className='pt-4 pb-2'>
+=======
+            <p className=' pt-4 pb-2'>
+>>>>>>> master
               <strong>Bài test (trắc nghiệm) DASS 21</strong> là thang đo&nbsp;(gồm 21 câu hỏi) giúp đánh giá mức độ rối
               loạn lo âu – trầm cảm - stress khá phổ biến hiện nay trong cộng đồng. Bài test này thường&nbsp;được sử
               dụng để đánh giá tình trạng tâm lý của những người gặp khó khăn trong cuộc sống, như mất việc làm, chấn
@@ -169,15 +206,22 @@ const Home = () => {
               </strong>
             </p>
           </div>
+<<<<<<< HEAD
 
           <div className='flex justify-center pt-2 pb-20'>
             <button
               onClick={togglePopup}
+=======
+          <div className='flex justify-center pt-2 pb-20'>
+            <button
+              onClick={handleButtonClick}
+>>>>>>> master
               className='w-1/2 bg-yellow-400 text-white py-2 rounded-sm text-xl font-semibold outline-primary'
             >
               BẮT ĐẦU
             </button>
           </div>
+<<<<<<< HEAD
         </div>
       )}
       {/* hiện bài test  */}
@@ -261,12 +305,22 @@ const Home = () => {
             </p>
           </div>
         </div>
+=======
+        </>
+>>>>>>> master
       )}
       {showPopup && (
-        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60'>
-          <div className='fixed bottom-0 left-0 right-0 top-0 m-auto h-[285px] w-[90%] rounded-[10px] bg-white px-5 pt-2 md:h-[336px] md:w-[48%]'>
+        <div
+          className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60'
+          onClick={handleOverlayClick}
+          // eslint-disable-next-line react/jsx-no-comment-textnodes
+        >
+          <div
+            className='fixed bottom-0 left-0 right-0 top-0 m-auto h-[285px] w-[90%] rounded-[10px] bg-white px-5 pt-2 md:h-[336px] md:w-[48%]'
+            onClick={handlePopupClick}
+          >
             <div className='absolute right-4 top-4'>
-              <button onClick={togglePopup}>
+              <button onClick={() => setShowPopup(false)}>
                 <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
                   <path
                     d='M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'
@@ -281,14 +335,23 @@ const Home = () => {
             <div className='flex items-end'>
               <div className='flex flex-col justify-center mx-auto mt-4 w-[290px] border-1 border-[#62BAC3] rounded-3xl md:mt-9 md:w-[494px] '>
                 <button
+<<<<<<< HEAD
                   onClick={handleStart}
+=======
+                  onClick={handleStartSurvey}
+>>>>>>> master
                   className='h-14 px-7 py-2 my-2 text-center text-16 font-medium text-black border taiwin hover:bg-[rgba(69,190,229,1)] hover:text-white md:px-0 rounded-2xl border-primary'
                 >
                   Tình cờ biết đến bài test, muốn làm thử
                 </button>
+<<<<<<< HEAD
 
                 <button
                   onClick={handleStart}
+=======
+                <button
+                  onClick={handleStartSurvey}
+>>>>>>> master
                   className='h-14 px-7 py-2 my-2 text-center text-16 font-medium text-black border taiwin hover:bg-[rgba(69,190,229,1)] hover:text-white md:px-0 rounded-2xl border-primary '
                 >
                   Đang gặp vấn đề tâm lý, cần tìm giải pháp hỗ trợ
@@ -298,7 +361,18 @@ const Home = () => {
           </div>
         </div>
       )}
+      {/* <div className='-md mx-auto my-6 w-9/12'>
+        <h3>Bạn đã hoàn thành Bài Test</h3>
+        <div className='w-full h-72 bg-slate-50 rounded-sm mt-4 py-11 px-6 border-spacing-x-px shadow-xl'>
+          <p className='font-medium'>Điểm Stress:</p>
+          <p className='font-semibold text-center flex justify-center pt-12 text-6xl'>10</p>
+          <p className='pt-16 font-semibold'>
+            Đánh giá Stress: Bạn không có dấu hiệu gặp rối loạn Stress (Bình thường)
+          </p>
+        </div>
+      </div> */}
       {/* END  */}
+      {surveyStarted && <SurveyQuestions />}
     </div>
   )
 }

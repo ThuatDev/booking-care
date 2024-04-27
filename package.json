@@ -13,6 +13,10 @@
     "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\""
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "axios": "^1.6.8",
+>>>>>>> master
     "json-server": "^1.0.0-alpha.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
