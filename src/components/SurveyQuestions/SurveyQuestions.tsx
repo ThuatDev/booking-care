@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react' // Import React và hai hooks
 import axios from 'axios' // Import thư viện axios để thực hiện các request HTTP
 import ProgressBar from './ProgressBar' // Import component ProgressBar
 import Question from './Question' // Import component Question
+import ChatBot from '../ChatBot/ChatBox'
 
 // Định nghĩa interface cho dữ liệu câu hỏi
 interface QuestionData {
@@ -40,13 +41,6 @@ const SurveyQuestions: React.FC = () => {
     fetchQuestions() // Gọi hàm fetchQuestions
   }, [])
 
-  // Hàm xử lý khi người dùng chọn một câu trả lời
-  // const handleAnswer = (answerIndex: number) => {
-  //   const updatedAnswers = [...answers] // Tạo một bản sao của mảng answers
-  //   updatedAnswers[currentQuestion] = questionsData[currentQuestion].answers[answerIndex] // Cập nhật câu trả lời cho câu hỏi hiện tại
-  //   setAnswers(updatedAnswers) // Cập nhật state answers
-  // }
-  // v2 dai hon
   const handleAnswer = (answerIndex: number) => {
     // Tạo một bản sao của mảng answers hiện tại
     const newAnswersArray = [...answers]
@@ -110,23 +104,31 @@ const SurveyQuestions: React.FC = () => {
   // Cập nhật render cho totalScore và depressionLevel
   if (totalScore !== null && depressionLevel !== null) {
     return (
-      <div className='-md mx-auto my-6 w-9/12'>
-        <h3 className='text-center text-2xl font-semibold'>Bạn đã hoàn thành Bài Test</h3>
-        <div className='w-full h-72 bg-slate-50 rounded-sm mt-4 py-11 px-6 border-spacing-x-px shadow-xl'>
-          <p className='font-medium'>Điểm Stress:</p>
-          <p className='font-semibold text-center flex justify-center pt-12 text-6xl'>{totalScore}</p>
+      <div className='relative m-auto h-full w-full items-start px-1 md:w-md lg:w-lg xl:w-xl flex justify-evenly'>
+        <div className='md mx-auto my-6 w-9/12'>
+          <h3 className='text-center text-2xl font-semibold'>Bạn đã hoàn thành Bài Test</h3>
+          <div className='w-full h-72 bg-slate-50 rounded-sm mt-4 py-11 px-6 border-spacing-x-px shadow-xl'>
+            <p className='font-medium'>Điểm Stress:</p>
+            <p className='font-semibold text-center flex justify-center pt-12 text-6xl'>{totalScore}</p>
 
-          <p className='pt-16 font-semibold'> Đánh giá Stress: {depressionLevel}</p>
-          <button
+            <p className='pt-16 font-semibold'> Đánh giá Stress: {depressionLevel}</p>
+            {/* <button
             className='bg-gray-500 text-white px-40 py-2 rounded hover:bg-gray-600 focus:outline-none mt-12 flex justify-center mx-auto'
             onClick={restartSurvey}
           >
             Làm lại
-          </button>
+          </button> */}
+          </div>
+          {/* <div></div> */}
+        </div>
+        <div className=' mt-10 mx-10'>
+          <div></div>
+          <ChatBot />
         </div>
       </div>
     )
   }
+
   // Nếu chưa có totalScore, hiển thị câu hỏi và các nút điều hướng
   return (
     <div className='relative m-auto h-full w-full items-start px-1 md:w-md lg:w-lg xl:w-xl'>
