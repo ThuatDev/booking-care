@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react'
 import SurveyQuestions from '../SurveyQuestions/SurveyQuestions'
 
@@ -18,7 +19,7 @@ const Home = () => {
     setShowPopup(false) // Ẩn popup khi click ra ngoài
   }
 
-  const handlePopupClick = (e) => {
+  const handlePopupClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation() // Ngăn chặn sự kiện click từ phát sinh ra ngoài popup
   }
 
@@ -100,6 +101,7 @@ const Home = () => {
         <div
           className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60'
           onClick={handleOverlayClick}
+          // eslint-disable-next-line react/jsx-no-comment-textnodes
         >
           <div
             className='fixed bottom-0 left-0 right-0 top-0 m-auto h-[285px] w-[90%] rounded-[10px] bg-white px-5 pt-2 md:h-[336px] md:w-[48%]'

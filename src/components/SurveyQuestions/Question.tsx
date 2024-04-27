@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-
 // Question.tsx
+import React from 'react'
+import Answer from './Answer'
+
 interface Props {
   data: {
     questionId: number
@@ -14,31 +15,18 @@ interface Props {
 }
 
 const Question: React.FC<Props> = ({ data, onAnswer, selectedAnswer, setSelectedAnswer }) => {
-  const handleAnswer = (index: number) => {
-    setSelectedAnswer(index)
-    onAnswer(index)
-  }
-
-  // Question.tsx
-  // ...existing code...
-
   return (
     <div className='border border-gray-300 p-4 rounded-sm my-5'>
       <div>{data.question}</div>
       {data.options.map((option, index) => (
-        <div key={index} className='flex items-center border-t-2 border-gray-300 py-2.5'>
-          <input
-            type='radio'
-            id={`option-${index}`}
-            name='answer'
-            className='mr-2 w-5 h-5'
-            checked={selectedAnswer === index}
-            onChange={() => handleAnswer(index)}
-          />
-          <label htmlFor={`option-${index}`} className='cursor-pointer'>
-            {option}
-          </label>
-        </div>
+        <Answer
+          key={index}
+          text={option}
+          index={index}
+          selected={selectedAnswer === index}
+          onChange={setSelectedAnswer}
+          onAnswer={onAnswer}
+        />
       ))}
     </div>
   )

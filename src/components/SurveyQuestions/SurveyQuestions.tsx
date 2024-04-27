@@ -43,17 +43,10 @@ const SurveyQuestions: React.FC = () => {
 
   const navigateToPreviousQuestion = () => {
     setCurrentQuestion((prev) => prev - 1)
-    // trả về dữ liệu trước đó của câu hỏi vừa chọn  = answers
+
     setSelectedAnswer(answers[currentQuestion - 1])
-    // và sẽ không cần phải chọn lại câu trả lời đó nữa ở lần lấm vào nút tiếp theo
   }
-  // const navigateToNextQuestion = () => {
-  //   setCurrentQuestion((prev) => prev + 1)
-  //   // check nếu câu trả lời đã được chọn trước đó thì sẽ không cần phải chọn lại nữa
-  //   if (answers[currentQuestion + 1] !== 0) {
-  //     setSelectedAnswer(answers[currentQuestion + 1])
-  //   } else setSelectedAnswer(null)
-  // }
+
   const navigateToNextQuestion = () => {
     const nextQuestion = currentQuestion + 1
     setCurrentQuestion(nextQuestion)
@@ -99,17 +92,6 @@ const SurveyQuestions: React.FC = () => {
 
   if (totalScore !== null) {
     return (
-      // <div className='max-w-md mx-auto mt-8'>
-      //   <h3>Bạn đã hoàn thành Bài Test</h3>
-      //   <div className='mt-4'>Đánh giá mức độ trầm cảm: {evaluateDepressionLevel(totalScore)}</div>
-      //   <div className='w-full h-4 bg-gray-200 rounded-full mt-4'></div>
-      //   <button
-      //     className='bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 focus:outline-none'
-      //     onClick={restartSurvey}
-      //   >
-      //     Làm lại
-      //   </button>
-      // </div>
       <div className='-md mx-auto my-6 w-9/12'>
         <h3 className='text-center text-2xl font-semibold'>Bạn đã hoàn thành Bài Test</h3>
         <div className='w-full h-72 bg-slate-50 rounded-sm mt-4 py-11 px-6 border-spacing-x-px shadow-xl'>
