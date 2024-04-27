@@ -57,9 +57,10 @@ const SurveyQuestions: React.FC = () => {
   const navigateToNextQuestion = () => {
     const nextQuestion = currentQuestion + 1
     setCurrentQuestion(nextQuestion)
+    setSelectedAnswer(null)
 
     // If the answer for the next question was previously selected, use it. Otherwise, reset the selected answer.
-    if (answers[nextQuestion] !== undefined) {
+    if (answers[nextQuestion] !== 0) {
       setSelectedAnswer(answers[nextQuestion])
     } else {
       setSelectedAnswer(null)
@@ -70,10 +71,16 @@ const SurveyQuestions: React.FC = () => {
       calculateScore()
     }
   }
+  useEffect(() => {
+    console.log('answers roadback', answers)
+  }, [answers])
+
   const restartSurvey = () => {
     setCurrentQuestion(0)
-    setAnswers([])
+    setAnswers(new Array(questionsData.length).fill(0))
+
     setTotalScore(null)
+    setSelectedAnswer(null)
   }
 
   const calculateScore = () => {
@@ -92,18 +99,31 @@ const SurveyQuestions: React.FC = () => {
 
   if (totalScore !== null) {
     return (
-      <div className='max-w-md mx-auto mt-8'>
-        <div className='text-lg font-semibold text-gray-800 mb-4'>Kết quả</div>
-        <div className='text-xl font-semibold text-gray-800 mb-4'>Tổng điểm: {totalScore}</div>
-        <div className='text-xl font-semibold text-gray-800 mb-4'>
-          Đánh giá mức độ trầm cảm: {evaluateDepressionLevel(totalScore)}
+      // <div className='max-w-md mx-auto mt-8'>
+      //   <h3>Bạn đã hoàn thành Bài Test</h3>
+      //   <div className='mt-4'>Đánh giá mức độ trầm cảm: {evaluateDepressionLevel(totalScore)}</div>
+      //   <div className='w-full h-4 bg-gray-200 rounded-full mt-4'></div>
+      //   <button
+      //     className='bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 focus:outline-none'
+      //     onClick={restartSurvey}
+      //   >
+      //     Làm lại
+      //   </button>
+      // </div>
+      <div className='-md mx-auto my-6 w-9/12'>
+        <h3 className='text-center text-2xl font-semibold'>Bạn đã hoàn thành Bài Test</h3>
+        <div className='w-full h-72 bg-slate-50 rounded-sm mt-4 py-11 px-6 border-spacing-x-px shadow-xl'>
+          <p className='font-medium'>Điểm Stress:</p>
+          <p className='font-semibold text-center flex justify-center pt-12 text-6xl'>{totalScore}</p>
+          {/* <p className='pt-16 font-semibold'>Đánh giá Stress: dựa trên evaluateDepressionLevel</p> */}
+          <p className='pt-16 font-semibold'> Đánh giá Stress: {evaluateDepressionLevel(totalScore)}</p>
+          <button
+            className='bg-gray-500 text-white px-40 py-2 rounded hover:bg-gray-600 focus:outline-none mt-12 flex justify-center mx-auto'
+            onClick={restartSurvey}
+          >
+            Làm lại
+          </button>
         </div>
-        <button
-          className='bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 focus:outline-none'
-          onClick={restartSurvey}
-        >
-          Làm lại
-        </button>
       </div>
     )
   }
@@ -135,7 +155,7 @@ const SurveyQuestions: React.FC = () => {
             Trước đó
           </button>
         )}
-        {currentQuestion < questionsData.length - 1 ? (
+        {currentQuestion < questionsData.length && (
           <button
             className={`font-semibold px-8 py-2 mx-3 rounded text-sm focus:outline-none ${
               selectedAnswer === null ? 'bg-gray-400' : 'bg-yellow-400'
@@ -144,10 +164,6 @@ const SurveyQuestions: React.FC = () => {
             disabled={selectedAnswer === null}
           >
             Tiếp theo
-          </button>
-        ) : (
-          <button className='bg-[#d2d2d2] text-white px-4 py-2 rounded  focus:outline-none' onClick={calculateScore}>
-            Tính điểm
           </button>
         )}
       </div>
