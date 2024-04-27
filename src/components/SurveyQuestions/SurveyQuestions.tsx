@@ -25,6 +25,7 @@ const SurveyQuestions: React.FC = () => {
         const response = await axios.get('http://localhost:3001/questions')
         setQuestionsData(response.data)
         setAnswers(new Array(response.data.length).fill(0))
+        
         setLoading(false)
       } catch (error) {
         console.error('Failed to fetch questions:', error)
@@ -153,4 +154,4 @@ const SurveyQuestions: React.FC = () => {
   )
 }
 
-export default SurveyQuestions
+export default SurveyQuestions;

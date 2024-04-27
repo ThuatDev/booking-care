@@ -31,7 +31,7 @@ const Answer: React.FC<Props> = ({ text, index, selected, onChange, onAnswer }) 
       tabIndex={0}
       className='flex items-center border-t-2 border-gray-300 py-3'
     >
-      <input type='radio' name='answer' checked={selected} className='form-radio text-blue-500 w-5 h-5 mr-2' readOnly />
+      <input type='radio' name='answer' checked={selected} className='form-radio text-blue-500 lg:w-5 lg:h-5  mr-2' readOnly />
       {text}
     </div>
   )
