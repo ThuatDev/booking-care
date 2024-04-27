@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, ChangeEvent, useRef, useEffect } from 'react'
 import useGenerativeLanguageAPI from './useGenerativeLanguageAPI'
 import { FaPaperPlane } from 'react-icons/fa'
-import './bot.css'
+
 import { FaSpinner } from 'react-icons/fa'
 
 interface MessagePart {
