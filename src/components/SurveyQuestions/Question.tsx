@@ -17,7 +17,7 @@ interface Props {
 const Question: React.FC<Props> = ({ data, onAnswer, selectedAnswer, setSelectedAnswer }) => {
   return (
     <div className='border border-gray-300 p-4 rounded-sm my-5'>
-      <div>{data.question}</div>
+      <div className='font-semibold'>{data.question}</div>
       {data.options.map((option, index) => (
         <Answer
           key={index}
