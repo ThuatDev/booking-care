@@ -15,6 +15,7 @@ interface QuestionData {
 // Định nghĩa component SurveyQuestions
 const SurveyQuestions: React.FC = () => {
   // Khởi tạo các state
+  const [depressionLevel, setDepressionLevel] = useState<string | null>(null)
   const [currentQuestion, setCurrentQuestion] = useState(0) // State cho câu hỏi hiện tại
   const [answers, setAnswers] = useState<number[]>([]) // State cho các câu trả lời
   const [totalScore, setTotalScore] = useState<number | null>(null) // State cho tổng điểm
@@ -94,25 +95,20 @@ const SurveyQuestions: React.FC = () => {
     setSelectedAnswer(null) // Reset selectedAnswer
   }
 
-  // Hàm tính toán tổng điểm
-  const calculateScore = () => {
-    const score = answers.reduce((acc, curr) => acc + curr, 0) // Tính tổng các câu trả lời
-    setTotalScore(score) // Cập nhật totalScore
+  // Cập nhật hàm calculateScore
+  const calculateScore = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/calculate', { answers })
+      console.log('>>>>>>data', response.data)
+      setTotalScore(response.data.totalScore)
+      setDepressionLevel(response.data.depressionLevel)
+    } catch (error) {
+      console.error('Failed to calculate score:', error)
+    }
   }
 
-  // Hàm đánh giá mức độ trầm cảm dựa trên điểm số
-  const evaluateDepressionLevel = (score: number) => {
-    if (score < 14) return 'Không biểu hiện trầm cảm'
-    if (score >= 14 && score <= 19) return 'Trầm cảm nhẹ'
-    if (score >= 20 && score <= 29) return 'Trầm cảm vừa'
-    return 'Trầm cảm nặng'
-  }
-
-  // Nếu đang trong trạng thái loading, hiển thị "Loading..."
-  if (loading) return <div>Loading...</div>
-
-  // Nếu đã có totalScore, hiển thị kết quả bài khảo sát
-  if (totalScore !== null) {
+  // Cập nhật render cho totalScore và depressionLevel
+  if (totalScore !== null && depressionLevel !== null) {
     return (
       <div className='-md mx-auto my-6 w-9/12'>
         <h3 className='text-center text-2xl font-semibold'>Bạn đã hoàn thành Bài Test</h3>
@@ -120,7 +116,7 @@ const SurveyQuestions: React.FC = () => {
           <p className='font-medium'>Điểm Stress:</p>
           <p className='font-semibold text-center flex justify-center pt-12 text-6xl'>{totalScore}</p>
 
-          <p className='pt-16 font-semibold'> Đánh giá Stress: {evaluateDepressionLevel(totalScore)}</p>
+          <p className='pt-16 font-semibold'> Đánh giá Stress: {depressionLevel}</p>
           <button
             className='bg-gray-500 text-white px-40 py-2 rounded hover:bg-gray-600 focus:outline-none mt-12 flex justify-center mx-auto'
             onClick={restartSurvey}
@@ -131,7 +127,6 @@ const SurveyQuestions: React.FC = () => {
       </div>
     )
   }
-
   // Nếu chưa có totalScore, hiển thị câu hỏi và các nút điều hướng
   return (
     <div className='relative m-auto h-full w-full items-start px-1 md:w-md lg:w-lg xl:w-xl'>
