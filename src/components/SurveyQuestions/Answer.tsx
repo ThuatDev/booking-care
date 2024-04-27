@@ -35,7 +35,7 @@ const Answer: React.FC<Props> = ({ text, index, selected, onChange, onAnswer }) 
         type='radio'
         name='answer'
         checked={selected}
-        className='form-radio text-blue-500 w-5 h-5 mr-4  focus:ring-2 focus:ring-blue-500 focus:ring-opacity-5'
+        className='form-radio text-blue-500 lg:w-5 lg:h-5 mr-4  focus:ring-2 focus:ring-blue-500 focus:ring-opacity-5'
         readOnly
       />
       {text}
