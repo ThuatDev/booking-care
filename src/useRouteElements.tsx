@@ -7,6 +7,10 @@ export default function useRouteElements() {
     {
       path: '/',
       element: <Home />
+    },
+    {
+      path: '/chatbot',
+      element: <ChatBot />
     }
   ])
   return routeElements
