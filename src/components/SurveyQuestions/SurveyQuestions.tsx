@@ -54,6 +54,7 @@ const SurveyQuestions: React.FC = () => {
     // Cập nhật state answers với mảng mới
     setAnswers(newAnswersArray)
   }
+  console.log('🚀 ~ handleAnswer ~ setAnswers:', setAnswers)
   // Hàm điều hướng đến câu hỏi trước đó
   const navigateToPreviousQuestion = () => {
     setCurrentQuestion((prev) => prev - 1) // Giảm currentQuestion đi 1

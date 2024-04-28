@@ -19,9 +19,9 @@ const useGenerativeLanguageAPI = () => {
   ) => {
     setIsLoading(true)
 
-    const API_KEY = 'YOUR_API_KEY HERE' // Replace
+    // const API_KEY =
     // lấy API_KEY từ https://aistudio.google.com/app/apikey
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY} `
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAvBp5X5BieLHHwYljisMoEXFB6wtb3M-8 `
 
     const trainingPrompt: Message[] = [] // Define the trainingPrompt variable
 
