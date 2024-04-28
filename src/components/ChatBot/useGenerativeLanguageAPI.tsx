@@ -20,7 +20,8 @@ const useGenerativeLanguageAPI = () => {
     setIsLoading(true)
 
     // const API_KEY =
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAvYcDp9U6kBEwFaDICPMkUI3bdN-vnKsg`
+    // lấy API_KEY từ https://aistudio.google.com/app/apikey
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?YOUR_OPENAI_API_KEY`
 
     const trainingPrompt: Message[] = [] // Define the trainingPrompt variable
 
