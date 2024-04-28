@@ -139,7 +139,17 @@ const Home = () => {
           </div>
         </div>
       )}
-
+      {/* <div className='-md mx-auto my-6 w-9/12'>
+        <h3>Bạn đã hoàn thành Bài Test</h3>
+        <div className='w-full h-72 bg-slate-50 rounded-sm mt-4 py-11 px-6 border-spacing-x-px shadow-xl'>
+          <p className='font-medium'>Điểm Stress:</p>
+          <p className='font-semibold text-center flex justify-center pt-12 text-6xl'>10</p>
+          <p className='pt-16 font-semibold'>
+            Đánh giá Stress: Bạn không có dấu hiệu gặp rối loạn Stress (Bình thường)
+          </p>
+        </div>
+      </div> */}
+      {/* END  */}
       {surveyStarted && <SurveyQuestions />}
     </div>
   )
